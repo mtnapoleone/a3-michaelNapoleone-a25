@@ -1,0 +1,31 @@
+body {
+  background: black;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  border: 1px solid white;
+  padding: 8px;
+  text-align: center;
+}
+
+input, button {
+  padding: 8px;
+  font-size: 1em;
+}
+/*https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/*/
