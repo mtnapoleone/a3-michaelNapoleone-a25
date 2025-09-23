@@ -1,23 +1,24 @@
-Assignment 2 - Short Stack: Basic Two-tier Web Application using HTML/CSS/JS and Node.js  
-===
-Michael Napoleone
-https://a2-michaelnapoleone.onrender.com/
-## Car Age List - Server Basics
-Include a very brief summary of your project here. Be sure to include the CSS positioning technique you used, and any required instructions to use your application.
-HTML: 1. /results page 2. form 3. link to google font 4. input fields
-CSS: added styling for 1. form 2. table 3. inputs and 4. buttons with colors and positioning (used flex, center, aligning)
-JS: added results to get server data, submit to post data, and also to put data for the extended activity
-Made it so the app can derive age dynamically when the year of the car is inputted
+Car Manager | CS4241 Assignment 3
 
-## Technical Achievements
-- **Tech Achievement 1**: shows an updating list on the main page that updates when the server updates
-- **Tech Achievement 2**: ability to edit the car when click on the edit button, the regular form changes to editing the car
+Your Render (or alternative server) link e.g. http://a3-joshua-cuneo.render.me
 
-### Design/Evaluation Achievements
-- **Design Achievement 1**: conducted speak aloud with 1 friend(as seen below)
+- The goal of this application is to act as a car manager for people who sign in through github to store information about cars they own and their performance 
+- Some challenges were: Auth0 is annoying to use because it will not actually log me out I have to clear the cookies and cache every time
+- Authentication: Auth0 because I have been in a group in Soft Eng that has used it before so I wanted to actually learn how it works too.
+- CSS Framework: Tailwind because I have experience with it from Soft Eng
+  - I made it use the font Roboto with fontFamily
+- Middleware:
+  - express.json - lets the server read JSON data
+  - .static  - acts as the bridge between frontend and backend
+  - session - keeps track of who's logged in across page loads
+  - passport - handles logging in (and with github)
+  - ensureAuthenticated - blocks access to car data unless logged in
 
-Feedback:
-  Last Name: Loleng
-  Problems: The coloring did not appear well on their laptop when they had force dark mode on opera enabled
-  Surprising Comments: I was surprised to hear that the edit button functionality seemed very intuitive, i thought it was a little funky
-  Changes: I would edit the css further for an actual web app, i just made it pretty basic for this assignment.
+Technical Achievements
+
+    Tech Achievement 1: I used OAuth authentication via the GitHub strategy
+    Tech Achievement 2: Achieved 100% on Lighthouse
+
+Design/Evaluation Achievements
+
+    N/A, already have full credit

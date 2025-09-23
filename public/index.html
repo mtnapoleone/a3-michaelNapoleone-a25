@@ -2,45 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>CS4241 Assignment 3</title>
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <title>Car Manager | CS4241 Assignment 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manage your car inventory with GitHub login, CRUD operations, and responsive design.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="http://localhost:3000/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            roboto: ['Roboto', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <script src="js/main.js" defer></script>
 </head>
-<body class="container mt-5">
+<body class="bg-black text-white font-roboto flex flex-col items-center min-h-screen p-6">
 
-<h1 class="mb-4">Car Manager</h1>
+<header class="w-full max-w-4xl text-center mb-6">
+  <h1 class="text-3xl font-bold">Car Manager</h1>
+</header>
 
-<div id="userInfo" class="mb-3">
-  <strong>Logged in as:</strong> <span id="username">Not logged in</span>
-</div>
+<section id="userInfo" class="mb-4 hidden">
+  <p><span class="font-semibold">Logged in as:</span> <span id="username" class="ml-2"></span></p>
+</section>
 
-<div id="auth" class="mb-4">
-  <a href="/auth/github" class="btn btn-dark" id="loginBtn">Login with GitHub</a>
-  <button class="btn btn-outline-danger" id="logoutBtn" style="display:none;">Logout</button>
-  <p id="userStatus" class="mt-2"></p>
-</div>
+<section id="auth" class="mb-6 flex gap-4 items-center">
+  <a href="/auth/github" class="bg-gray-800 text-white px-4 py-2 rounded" id="loginBtn">Login with GitHub</a>
+  <button class="border border-red-500 text-red-500 px-4 py-2 rounded hidden" id="logoutBtn">Logout</button>
+  <p id="userStatus" class="ml-4 text-sm"></p>
+</section>
 
-<form id="carform" class="mb-4" style="display:none;">
-  <div class="row g-2">
-    <div class="col-md-3">
-      <input type="text" id="model" class="form-control" placeholder="Model" required>
-    </div>
-    <div class="col-md-3">
-      <input type="number" id="year" class="form-control" placeholder="Year" required>
-    </div>
-    <div class="col-md-3">
-      <input type="number" id="mpg" class="form-control" placeholder="MPG" required>
-    </div>
-    <div class="col-md-3">
-      <button type="submit" class="btn btn-primary w-100">Add Car</button>
-    </div>
+<form id="carform" class="grid gap-4 mb-6 w-full max-w-4xl hidden" aria-label="Add or update car">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <input type="text" id="model" class="p-2 text-black rounded" placeholder="Model" required aria-label="Model">
+    <input type="number" id="year" class="p-2 text-black rounded" placeholder="Year" required aria-label="Year">
+    <input type="number" id="mpg" class="p-2 text-black rounded" placeholder="MPG" required aria-label="MPG">
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Add Car</button>
   </div>
 </form>
 
-<div id="results"></div>
+<section id="results" class="w-full max-w-4xl mx-auto overflow-x-auto mt-6" aria-label="Car list table">
+  <!-- Table injected by JS -->
+</section>
+
+<footer class="mt-10 text-xs text-gray-400 text-center">
+  Styling powered by <a href="https://tailwindcss.com/docs" class="underline">Tailwind CSS</a>.
+  Dark mode reference: <a href="https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/" class="underline">CSS-Tricks Guide to Dark Mode</a>.
+  Font provided by <a href="https://fonts.google.com/specimen/Roboto" class="underline">Google Fonts: Roboto</a>.
+</footer>
 
 </body>
 </html>
+
+
+<!-- https://tailwindcss.com/docs-->
+<!--https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/-->
+<!--https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps-->
+<!--https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script-->
+<!--https://getbootstrap.com/docs/5.3/getting-started/introduction/-->

@@ -18,12 +18,19 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => console.log("Connected to MongoDB"));
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith(".js") || filePath.endsWith(".css") || filePath.endsWith(".woff2")) {
+      res.setHeader("Cache-Control", "public, max-age=31536000");
+    }
+  }
+}));
 
 app.use(session({
   secret: process.env.SESSION_SECRET || "your-secret-key",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: { secure: false, httpOnly: true }
 }));
 
 app.use(passport.initialize());
@@ -40,12 +47,10 @@ passport.use(new GitHubStrategy({
   return done(null, profile);
 }));
 
-app.get("/auth/github", (req, res, next) => {
-  passport.authenticate("github", {
-    scope: ["user:email"],
-    prompt: "login"
-  })(req, res, next);
-});
+app.get("/auth/github", passport.authenticate("github", {
+  scope: ["user:email"],
+  prompt: "login"
+}));
 
 app.get("/auth/github/callback",
     passport.authenticate("github", { failureRedirect: "/" }),
@@ -127,3 +132,11 @@ app.delete("/submit", ensureAuthenticated, async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
+//https://github.com/cfsghost/passport-github
+//https://www.passportjs.org/docs/
+//https://www.npmjs.com/package/express-session
+//https://expressjs.com/en/guide/routing.html
+//https://mongoosejs.com/docs/guide.html
+// https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps
+//https://developer.mozilla.org/en-US/docs/Web/HTTP/Session
