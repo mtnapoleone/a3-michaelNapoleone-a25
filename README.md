@@ -1,6 +1,6 @@
 Car Manager | CS4241 Assignment 3
 
-Your Render (or alternative server) link e.g. http://a3-joshua-cuneo.render.me
+Render Link: http://a3-michaelnapoleone-a25-production.up.railway.app
 
 - The goal of this application is to act as a car manager for people who sign in through github to store information about cars they own and their performance 
 - Some challenges were: Auth0 is annoying to use because it will not actually log me out I have to clear the cookies and cache every time
@@ -18,6 +18,7 @@ Technical Achievements
 
     Tech Achievement 1: I used OAuth authentication via the GitHub strategy
     Tech Achievement 2: Achieved 100% on Lighthouse
+    Tech Achievement 3: Deployed on Railway instead of render
 
 Design/Evaluation Achievements
 
