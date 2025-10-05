@@ -140,6 +140,11 @@ window.onload = async function() {
   const userStatus = document.querySelector("#userStatus");
   const usernameSpan = document.querySelector("#username");
   const userInfo = document.querySelector("#userInfo");
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("loggedin")) {
+    location.replace("/");
+    return;
+  }
 
   try {
     const userRes = await fetch("/user");

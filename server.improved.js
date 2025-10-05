@@ -57,7 +57,7 @@ app.get("/auth/github/callback",
     (req, res) => {
       req.session.userId = req.user.id;
       req.session.username = req.user.username;
-      res.redirect("/");
+      res.redirect("/?loggedin=true");
     }
 );
 
